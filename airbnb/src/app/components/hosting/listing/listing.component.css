@@ -1,0 +1,21 @@
+section#listing .icon a{
+    color: #DE1E45;
+    font-size: 2rem;
+    font-weight: bold;  
+}
+section#listing h2{
+    font-weight: bold;
+    font-size: 3rem;
+    color: #DE1E45;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #aaa;
+}
+div.card{
+    padding: 2rem;
+    border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -ms-border-radius: 15px;
+    -o-border-radius: 15px;
+    box-shadow: 5px 5px 5px 5px #aaa,-10px 10px 10px -10px #aaa;
+}

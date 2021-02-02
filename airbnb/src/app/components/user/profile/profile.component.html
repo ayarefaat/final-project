@@ -1,0 +1,35 @@
+<section>
+    <div class="container-fluid">
+        <a routerLink="/"> <img src="/assets/images/logo.png" alt="" width="140"></a>
+        <hr>
+    </div>
+</section>
+<section>
+    <div class="container" *ngIf="user.length>0">
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="card" >
+                    <img class="card-img-top rounded" width="100%" [src]=url alt="Card image cap" *ngIf="isVisible">
+                    <input  type="file" id="photo" class="form-control" (change)="upload($event)" *ngIf="!isVisible">
+                    <div class="card-body">
+                      <h2 class="card-title">Profile</h2>
+                      <div class="profile">
+                          <h6>First Name: <span>{{user[0].firstName}}</span></h6>
+                          <h6>Last Name: <span>{{user[0].lastName}}</span></h6>
+                          <h6>Email : <span>{{user[0].email}}</span> </h6>
+                          <h6>Mobile: <span>{{user[0].mobile}}</span></h6>
+                          <h6>Age: <span>{{user[0].age}}</span></h6>
+                          <h6>Gender: <span>{{user[0].gender}}</span></h6>
+                      </div>
+                      <a [routerLink]="['/user/edit',user[0].userID]" routerLinkActive="router-link-active" class="btn" >Edit</a>
+                    </div>
+                  </div>
+            </div>
+            <div class="col-lg-8">
+                <div>
+                    <img src="/assets/images/profile2.jpeg" width="100%" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
