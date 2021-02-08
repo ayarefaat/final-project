@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { User } from '../../models/user';
 import { UserService } from './../../../services/user.service';
 import { ApiResponse } from './../../models/ApiResponse';
+import { FormGroup, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-profile',
@@ -10,29 +11,61 @@ import { ApiResponse } from './../../models/ApiResponse';
 })
 export class ProfileComponent implements OnInit {
 user:User[]=[]
-url:any
-isVisible:boolean=false
-  constructor(private _userService:UserService ) { }
+url:any;
+image:null;
+// userImage:null;
+ID:number
+isVisible:boolean
+form:FormGroup
+change(){
+  if(this.user[0].userImage){
+    this.isVisible=false
+  }else{
+    this.isVisible=true
+  }
+}
+  constructor(private _userService:UserService,private _formBuilder:FormBuilder ) { }
 
   ngOnInit(): void {
+    this.form=this._formBuilder.group({
+      userImage:['']
+    })
     this._userService.getProfile().subscribe(res=>{
       console.log((res as ApiResponse).data)
       let currentUser=(res as ApiResponse).data
       this.user.push(currentUser)
-      console.log(this.user[0].firstName)
+      this.ID=this.user[0].userID;
+      console.log(this.user[0].firstName, this.user[0].userImage);
+      this.change();
+    
     })
   }
 
   upload(event:any) {
     if (event.target.files && event.target.files[0]) {
       var reader = new FileReader();
-  
+      const file=event.target.files[0];
+      // this.form.get('userImage').setValue(file);
+      this.image=file
+      reader.readAsDataURL(event.target.files[0]);
+      console.log(file)
       reader.onload = (event: ProgressEvent) => {
         this.url = (<FileReader>event.target).result;
       }
-  
-      reader.readAsDataURL(event.target.files[0]);
+      // this.isVisible=true;
     }
-    this.isVisible=true
+  
   }
+updateImage(){
+  let userUploadImage:User= new User();
+  const formData=new FormData();
+  formData.append('userImage',this.image);
+  console.log(formData,this.image)
+  this._userService.uploadImage(this.ID,formData).subscribe(res=>{
+    console.log(res);
+  })
+}
+changeImage(){
+  this.isVisible=true
+}
 }

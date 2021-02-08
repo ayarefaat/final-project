@@ -1,0 +1,84 @@
+<section id="details">
+    <div class="container-fluid">
+        <div class="icon">
+            <a routerLink="/"><i class="fab fa-airbnb"></i></a>
+        </div>
+        <div class="container" *ngIf="host.length>0">
+            <h2>Place Details</h2>
+            <div class="row mb-5">
+                <div class="card mb-3 event" >
+                    <div class="row no-gutters">
+                        <div class="col-md-4">
+                            <img src="/assets/images/{{host[0].hostImage}}" class="card-img " alt="...">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h4 class="card-title">{{host[0].propertyType}} in {{host[0].address}}, Hosted by <span>{{host[0].hostName}}</span></h4>
+                                <p class="card-text text-muted text-justify">{{host[0].description}}</p>
+                                <div class="content ">
+                                    <ul class="list-unstyled">
+                                        <li><span><i class="fas fa-users"></i></span> {{host[0].numberOfGuests}} guests</li>
+                                        <li><span><i class="fas fa-bed"></i></span> {{host[0].numberOfBedrooms}} bedrooms</li>
+                                        <li><span><i class="fas fa-bath"></i></span> {{host[0].numberOfBathrooms}} bathrooms</li>
+                                        <li><span><i class="fas fa-cloud-moon"></i></span> {{host[0].numberOfNights}} nights</li>
+                                        <li><span><i class="fas fa-hand-holding-usd"></i></span> {{host[0].totalPrice}} $</li>
+                                    </ul>
+                                </div>
+
+
+                            </div>
+                        </div>
+                       
+                    </div>
+                </div>
+                
+            </div>
+
+        </div>
+    </div>
+</section>
+<hr>
+<section id="reserve">
+    <div class="container" *ngIf="host.length>0">
+        <div class="rules">
+            <h2> {{host[0].propertyType}} in {{host[0].address}} ,{{host[0].numberOfNights}} nights  </h2>
+            <ul class="list-unstyled">
+                <li><span><i class="fas fa-hand-sparkles"></i></span>Enhanced Clean </li>
+                <p>This host committed to Airbnb's 5-step enhanced cleaning process. </p>
+                <li><span><i class="fas fa-clipboard-check"></i></span> Self check-in</li>
+                <p>You can check in with the doorman.</p>
+                <li><span><i class="fas fa-shield-alt"></i></span><span class="name">{{host[0].hostName}}</span>is a Superhost</li>
+                <p>Superhosts are experienced, highly rated hosts who are committed to providing great stays for guests.</p>
+                <li><span><i class="fas fa-book-open"></i></span>House rules</li>
+                <p>The host doesn’t allow pets, parties, or smoking.</p>
+               
+            </ul>
+        </div>
+    </div>
+</section>
+<hr>
+<section id="amenties">
+    <div class="container" *ngIf="host.length>0">
+        <h2>Amenities</h2>
+        <div class="row">
+            <div class="col-md-6">
+                <ul class="list-unstyled">
+                    <li><span><i class="fas fa-hot-tub"></i></span>Washer</li>
+                    <li><span><i class="fas fa-sink"></i></span>Kitchen</li>
+                    <li><span><i class="fas fa-wifi"></i></span>Wifi</li>
+                    <li><span><i class="fas fa-fan"></i></span>Air conditing</li>
+                </ul>
+            </div>
+            <div class="col-md-6">
+                <ul class="list-unstyled">
+                    <li *ngFor="let item of activity"><span><i class="fas fa-swimmer"></i></span>{{item}}</li>
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <h4 class="mt-5 contact col-md-9">Contact host : <span>{{host[0].hostEmail}}</span></h4>
+           <button type="button" [disabled]=isDisabled class="reserve btn mt-5 col-md-3 mb-3" [routerLink]="['/places/reserve',host[0].hostID]" routerLinkActive="router-link-active">Reserve</button>
+        </div>
+        <div><h5 *ngIf="isVisible" class="col-md-3 ml-auto text-muted">This Trip is reserved by you <span>{{profileName}}</span></h5></div>
+    </div>
+</section>

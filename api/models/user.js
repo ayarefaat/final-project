@@ -1,7 +1,7 @@
 const mongoose =require('mongoose');
 const autoIncrement = require('mongoose-auto-increment');
 //autoIncrement
-let connection = mongoose.createConnection("mongodb://localhost/airbnb",{useUnifiedTopology: true,useNewUrlParser: true});
+let connection = mongoose.createConnection("mongodb+srv://airbnb:airbnb@cluster0.qr2xc.mongodb.net/airbnb1",{useUnifiedTopology: true,useNewUrlParser: true});
 autoIncrement.initialize(connection);
 
 let userSchema=new mongoose.Schema({

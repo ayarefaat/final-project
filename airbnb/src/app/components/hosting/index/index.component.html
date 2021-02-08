@@ -6,10 +6,10 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-5 col-md-12 earn">
-                    <h3>Earn up to <span>118$</span> a month hosting your home</h3>
+                    <h3>Earn up to <span>$321</span> a month hosting your home</h3>
                 </div>
                 <div class="col-lg-7">
-                    <div id="form">
+                    <div id="form" *ngIf="!isVisible">
                         <div class="container">
                             <h4>Tell us more about your place and we'll update your estimate</h4>
                             <form [formGroup]="form">
@@ -22,6 +22,8 @@
                                     <option>Alex</option>
                                     <option>Matrouh</option>
                                     <option>North coast</option>
+                                    <option>Ras Sedr</option>
+                                    <option>El-Alamein</option>
                                   </select>
                                 </div>
                                 <div class="form-group">
@@ -42,7 +44,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="numberOfBedrooms1"><h5>Number of Bedrooms:</h5></label>
-                                    <input formControlName="numberOfBedrooms" type="text" class="form-control" id="exampleInputnumberOfBedrooms1" placeholder="numberOfBedrooms">
+                                    <input formControlName="numberOfBedrooms" type="text" class="form-control" id="exampleInputnumberOfBedrooms1" placeholder="Enter numberOfBedrooms">
                                     <div *ngIf="form.controls['numberOfBedrooms'].invalid && (form.controls['numberOfBedrooms'].touched || form.controls['numberOfBedrooms'].dirty)">
                                       <small class="form-text text-danger" *ngIf="form.controls['numberOfBedrooms'].hasError('required')">required numberOfBedrooms</small>
                                   </div>
@@ -58,18 +60,19 @@
                                   </div>
                                 <div class="form-group">
                                   <label for="totalPrice"><h5>Total Price:</h5></label>
-                                  <input formControlName="totalPrice"  type="text" id="totalPrice" class="form-control"   placeholder="Enter price Per Night">
+                                  <input formControlName="totalPrice"  type="text" id="totalPrice" class="form-control"   placeholder="Enter total price">
                                   <div *ngIf="form.controls['totalPrice'].invalid && (form.controls['totalPrice'].touched || form.controls['totalPrice'].dirty)">
                                     <small  class="form-text text-danger" *ngIf="form.controls['totalPrice'].hasError('required')" >Required field</small>
                                   </div>
                                 </div>
                                 <div class="form-group">
                                   <label for="numberOfNights"><h5>Number of nights:</h5></label>
-                                  <input formControlName="numberOfNights"  type="text" id="numberOfNights" class="form-control"   placeholder="Enter price Per Night">
+                                  <input formControlName="numberOfNights"  type="text" id="numberOfNights" class="form-control"   placeholder="Enter number of nights">
                                   <div *ngIf="form.controls['numberOfNights'].invalid && (form.controls['numberOfNights'].touched || form.controls['numberOfNights'].dirty)">
                                     <small  class="form-text text-danger" *ngIf="form.controls['numberOfNights'].hasError('required')" >Required field</small>
                                   </div>
                                 </div>
+                               
                                 <div class="form-group">
                                   <label for="description"><h5>Description :</h5></label>
                                   <textarea formControlName="description"  type="text"  class="form-control" rows="4" placeholder="Tell us more about your place" ></textarea>
@@ -86,18 +89,24 @@
                                     <option>Pool</option>
                                   </select>
                                 </div>
-                                <div class="form-group ">
-                                    <label for="photo" ><h5>Upload a photo of your place:</h5></label>
-                                   <div class="row justify-content-around">
-                                    <input formControlName="totalPrice" type="file" id="photo" class="form-control col-md-9">
-                                    <!-- <img [src]=url alt=""> -->
-                                    <button  type="button" class="btn col-md-2" >Upload</button>
-                                   </div>
-                                  </div>
-                                <button [disabled]="form.invalid" type="submit" class="btn" (click)="addHost()">Start Hosting!</button>
+                                <button [disabled]="form.invalid" type="submit" class="btn" (click)="addHost()">Next!</button>
                                 </form>
                             </div>
                     </div> 
+                    <div id="imgForm" *ngIf="isVisible">
+                      <div class="container">
+                        <form [formGroup]="form">
+                            <div class="form-group">
+                                <label for="photo" ><h4>Upload your photo:</h4></label>
+                               <div class="row justify-content-around">
+                                <input formControlName="hostImage" type="file"  class="form-control col-lg-10 col-sm-12" (change)="selectImage($event)" >
+                                <!-- <button  type="button" class="btn btn-success">upload</button> -->
+                               </div>
+                              </div>
+                        </form>
+                        <button type="submit" class="btn text-muted" (click)="start()">Start Hosting!</button>
+                    </div>
+                    </div>
                 </div>
             </div>
         </div>

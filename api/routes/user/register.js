@@ -4,17 +4,6 @@ const express=require('express');
 const router= express.Router();
 const User=require('../../models/user');
 
-//multer
-const multer  = require('multer');
-const storage=multer.diskStorage({
-    destination:function(req,file,cb){
-        cb(null,"./uploads/")
-    },
-    filename:function(req,file,cb){
-        cb(null,file.originalname)
-    }
-});
-const upload=multer({storage:storage});
 
 
 const bcrypt=require('bcrypt');
@@ -36,28 +25,7 @@ router.get('/',(req,res)=>{
     })
 });
 
-// uploading photo
-router.post('/upload',upload.single('userImage'),(req,res,next)=>{
-    console.log(req.file)
-    let fileUrl = req.file.path.replace(/\\/g, "/").substring("uploads".length)
-    console.log(fileUrl)
-    User.create({
-        userImage:fileUrl
-    },(err,image)=>{
-        console.log(err)
-        if(err){
-            res.json({
-                message:"Can't upload Image",
-                success:false
-            })
-        }else{
-            res.json({
-                message:"Image uploaded",
-                success:true
-            })
-        }
-    })
-})
+
 router.get('/:id',(req,res)=>{
     let id=req.params.id;
     User.findOne({userID:id},(err,user)=>{
@@ -79,7 +47,7 @@ router.post('/',(req,res)=>{
             email=req.body.Email;
             // console.log(email)
         User.findOne({email:email},(err,user)=>{
-            console.log(user)
+            // console.log(user)
             if(user){
                  res.json({
                     data:null,

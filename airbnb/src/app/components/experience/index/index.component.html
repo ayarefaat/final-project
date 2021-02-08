@@ -6,8 +6,8 @@
         <div class="content">
             <h6>airbnb experiences</h6>
             <h2>Host an online experience</h2>
-            <p>Join a community of hosts bringing the world together in a whole new way.</p>
-            <button class="btn" routerLink="/experience/add">Get started</button>
+            <p>Join a community of hosts bringing <br>the world together in a whole new way.</p>
+            <button class="btn" routerLink="/experience/addExperience">Get started</button>
         </div>
     </div>
 </section>
@@ -16,11 +16,11 @@
 </section>
 <section id="airbnbExp">
     <div class="container-fluid">
-        <p>Airbnb Experiences are engaging activities designed by
-             locals that go beyond the typical tour or class. 
+        <p>Airbnb Experiences are engaging activities<br> designed by
+             locals that go beyond the typical tour or class. <br>
             And now you can host them for anyone, from anywhere.
         </p>
-        <div class="row  pr-5 pl-5">
+        <div class="row  pr-5 pl-5 mb-3">
             <div class="col-md-4" *ngFor="let item of host">
                 <app-card [icon]=item.icon [title]=item.h4 [description]=item.p></app-card>
             </div>

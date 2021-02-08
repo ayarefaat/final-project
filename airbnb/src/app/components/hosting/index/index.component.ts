@@ -12,6 +12,11 @@ import { Router } from '@angular/router';
 })
 export class IndexComponent implements OnInit {
   form:FormGroup;
+  isVisible:boolean=false;
+  image:null;
+  url:any;
+  ID:number;
+  hosts:Host[]=[]
   constructor(private _formBuilder:FormBuilder , private _hostService:HostService ,private _router:Router) { }
 about=[
   {h4:"Why host on Airbnb?",p:"No matter what kind of home or room you have to share, Airbnb makes it simple and secure to host travelers. You’re in full control of your availability, prices, house rules, and how you interact with guests."},
@@ -43,19 +48,59 @@ safety=[
       totalPrice:['',[Validators.required]],
       numberOfNights:['',[Validators.required]],
       description:['',[Validators.required]],
-      activities:['']
+      // startDate:['',[Validators.required]],
+      // endDate:['',[Validators.required]],
+      activities:[''],
+      hostImage:[''],
+      // hostStatus:[''],
+      // hostID:[]
     })
+    
   }
 addHost(){
   let host:Host=new Host();
   host=this.form.value;
   console.log(host);
   this._hostService.addHost(host).subscribe(res=>{
+    host.hostID=(res as ApiResponse).data.hostID
+    this.ID=host.hostID
     console.log((res as ApiResponse).success)
     if((res as ApiResponse).success==true){
-      this._router.navigateByUrl('/hosting/listing')
+      // this._router.navigateByUrl('/hosting/listing')
+      this.isVisible=true
+      if(this.isVisible){
+        this._hostService.getHostById(host.hostID).subscribe(res=>{
+          let currentHost=(res as ApiResponse).data;
+          this.hosts.push(currentHost)
+          console.log(res , "hosts Array", this.hosts)
+        })
+      }
     }
 
   })
 }
+selectImage(event:any) {
+  if (event.target.files && event.target.files[0]) {
+    var reader = new FileReader();
+    const file=event.target.files[0];
+    // this.form.get('userImage').setValue(file);
+    this.image=file
+    reader.readAsDataURL(event.target.files[0]);
+    console.log(file)
+    reader.onload = (event: ProgressEvent) => {
+      this.url = (<FileReader>event.target).result;
+    }
+  }
+
+}
+start(){
+  const formData=new FormData();
+  formData.append('hostImage',this.image);
+  this._hostService.uploadImage(this.ID,formData).subscribe(res=>{
+    console.log(res);
+    this._router.navigateByUrl('hosting/confirm')
+  })
+  
+}
+
 }

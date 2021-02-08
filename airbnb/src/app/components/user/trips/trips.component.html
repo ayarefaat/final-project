@@ -1,0 +1,26 @@
+<section id="trips">
+    <div class="container-fluid">
+        <div class="icon mb-5">
+            <a routerLink="/"><i class="fab fa-airbnb"></i></a>
+        </div>
+       <div class="container mt-5">
+        <h2 class="mb-5 text-center">Your Trips</h2>
+        <!-- <h3 *ngIf="hosts[0].length==0" class="noListing" >No listing Found</h3> -->
+           <div class="row">
+               <div class="col-lg-4 col-md-6 col-sm-12 mb-5" *ngFor="let item of trips[0]">
+                <div class="card">
+                    <div class="card-body">
+                      <h5 class="card-title"> <span class="mr-3"><i class="fas fa-map-marker-alt"></i></span> {{item.tripLocation}}</h5>
+                      <h5 class="card-title"><span class="mr-2"><i class="fas fa-moon"></i></span>{{item.tripNights}} Nights</h5>
+                      <h5 class="card-title"><span class="mr-3"><i class="fas fa-dollar-sign"></i></span>{{item.tripPrice}} $</h5>
+                      <p style="font-weight: bold;">For any inquires:</p>
+                      <h6 class="card-title"><span class="mr-2"><i class="fas fa-envelope"></i></span> {{item.tripHostEmail}}</h6>
+                      <button type="button" class="btn " (click)="deleteTrip(item.placeID)">Delete</button>
+                    </div>
+                  </div>
+               </div>
+           </div>
+       </div>
+    </div>
+</section>
+

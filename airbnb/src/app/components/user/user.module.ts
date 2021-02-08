@@ -9,6 +9,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { SharedModule } from '../../shared/shared.module';
 import { LogoutComponent } from './logout/logout.component';
 import { EditComponent } from './edit/edit.component';
+import { TripsComponent } from './trips/trips.component';
 
 
 const routes:Routes=[
@@ -16,11 +17,12 @@ const routes:Routes=[
   {path:'signup',component:SignupComponent},
   {path:'logout',component:LogoutComponent},
   {path:'profile',component:ProfileComponent},
-  {path:'edit/:id',component:EditComponent}
+  {path:'edit/:id',component:EditComponent},
+  {path:'trips',component:TripsComponent}
 ]
 
 @NgModule({
-  declarations: [LoginComponent, ProfileComponent,SignupComponent, LogoutComponent, EditComponent],
+  declarations: [LoginComponent, ProfileComponent,SignupComponent, LogoutComponent, EditComponent, TripsComponent],
   imports: [
 RouterModule.forChild(routes),SharedModule,CommonModule
   ]

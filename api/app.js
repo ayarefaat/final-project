@@ -33,19 +33,33 @@ const profile=require('./routes/user/profile')
 app.use('/user/profile',auth,profile)
 //require addHost
 const addHost=require('./routes/host/addHost');
-app.use('/host/addHost',auth,addHost)
+app.use('/host',auth,addHost)
+
+const place=require('./routes/place/place')
+app.use('/places',auth,place)
+
+const experience=require('./routes/experience/experience')
+app.use('/experiences',auth,experience)
+
 
 //mongoose
 const mongoose=require('mongoose');
 
-mongoose.connect("mongodb://127.0.0.1:27017/airbnb",{useUnifiedTopology: true,useNewUrlParser: true}).then(()=>{
+// mongoose.connect("mongodb://127.0.0.1:27017/airbnb",{useUnifiedTopology: true,useNewUrlParser: true}).then(()=>{
+//     console.log("connected successfully to MongoDb")
+// }).catch(()=>{
+//     console.log("Couldn't connect to mongoDb")
+// });
+// mongoose.set('useFindAndModify', false);
+// mongoose.set('useCreateIndex', true);
+
+mongoose.connect("mongodb+srv://airbnb:airbnb@cluster0.qr2xc.mongodb.net/airbnb1",{useUnifiedTopology: true,useNewUrlParser: true}).then(()=>{
     console.log("connected successfully to MongoDb")
 }).catch(()=>{
     console.log("Couldn't connect to mongoDb")
 });
 mongoose.set('useFindAndModify', false);
 mongoose.set('useCreateIndex', true);
-
 let files_arr=fs.readdirSync(__dirname+"/models");
 files_arr.forEach((file)=>{
     require(__dirname+"/models/"+file)

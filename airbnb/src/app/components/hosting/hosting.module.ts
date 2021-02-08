@@ -7,16 +7,18 @@ import { CardComponent } from './components/card/card.component';
 import { ImageCardComponent } from './components/image-card/image-card.component';
 import { ListingComponent } from './listing/listing.component';
 import { EditListingComponent } from './edit-listing/edit-listing.component';
+import { ConfirmComponent } from './confirm/confirm.component';
 
 const routes:Routes=[
   {path :'',component:IndexComponent},
   {path :'listing',component:ListingComponent},
   {path :'editListing/:id',component:EditListingComponent},
+  {path :'confirm',component:ConfirmComponent},
 ]
 
 
 @NgModule({
-  declarations: [IndexComponent, CardComponent, ImageCardComponent, ListingComponent, EditListingComponent],
+  declarations: [IndexComponent, CardComponent, ImageCardComponent, ListingComponent, EditListingComponent, ConfirmComponent],
   imports: [
     RouterModule.forChild(routes),SharedModule,CommonModule
   ]

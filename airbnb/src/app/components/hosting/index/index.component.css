@@ -18,7 +18,7 @@ section#hosting .icon a{
     font-weight: bold;
     
 }
-div#form{
+div#form, div#imgForm{
     border: 1px solid #000;
     padding: 2rem;
     border-radius: 15px;

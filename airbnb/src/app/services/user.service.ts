@@ -20,7 +20,7 @@ export class UserService {
   updateUser(user:User){
     return this._apiService.put(`user/profile/${user.userID}`,user)
   }
-  uploadImage(image:any){
-    return this._apiService.postImage('user/register/upload',image)
+  uploadImage(id:number,image:any){
+    return this._apiService.put(`user/profile/photo/${id}`,image)
   }
 }

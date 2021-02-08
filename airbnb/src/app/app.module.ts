@@ -8,8 +8,8 @@ import { FooterComponent } from './components/shared/footer/footer.component';
 import {HttpClientModule} from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import{SharedModule} from './shared/shared.module'
-
+import{SharedModule} from './shared/shared.module';
+import { MaxLengthPipe } from './max-length.pipe';
 
 
 
@@ -18,6 +18,8 @@ import{SharedModule} from './shared/shared.module'
     AppComponent,
     LayoutComponent,
     FooterComponent,
+    MaxLengthPipe,
+
   ],
   imports: [
   BrowserModule,

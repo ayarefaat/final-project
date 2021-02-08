@@ -1,0 +1,36 @@
+<section id="listing">
+    <div class="container-fluid">
+        <div class="icon mb-5">
+            <a routerLink="/"><i class="fab fa-airbnb"></i></a>
+        </div>
+       <div class="container mt-5">
+        <h2 class="mb-5 text-center">Your Experiences</h2>
+        <!-- <h3 *ngIf="hosts[0].length==0" class="noListing" >No listing Found</h3> -->
+           <div class="row" *ngIf="experiences.length>0">
+               <div class="col-lg-4 col-md-6 col-sm-12 mb-5" *ngFor="let item of experiences[0];let currentIndex=index">
+                <div class="card">
+                    <img class="card-img-top" src="/assets/images/{{item.placeImage}}" width="100%"  alt="Card image cap" *ngIf="!isVisible">
+                    <!-- <div class="container">
+                        <form [formGroup]="form" *ngIf="isVisible">
+                            <div class="form-group">
+                                <label for="photo" ><h4>Upload a picture of your place:</h4></label>
+                               <div class="row justify-content-around">
+                                <input formControlName="hostImage" type="file"  class="form-control col-lg-10 col-sm-12" (change)="selectImage($event)" >
+                                <button  type="button" class="btn mt-2 upload" (click)="start(item.hostID)">upload</button>
+                               </div>
+                              </div>
+                        </form>
+                    </div> -->
+                    <div class="card-body">
+                      <h5 class="card-title"> <span class="mr-3"><i class="fas fa-map-marker-alt"></i></span> {{item.place}}</h5>
+                      <h5 class="card-title"><span class="mr-2"> <i class="fas fa-utensils"></i></span> {{item.typeOfExperience}}</h5>
+                      <p class="card-title lead"><span class="mr-2"><i class="fas fa-clipboard"></i> </span> {{item.description}} </p>
+                      <a  [routerLink]="['/experience/editExperience',item.experienceID]" routerLinkActive="router-link-active" class="btn btn-success mr-2">Edit</a>
+                       <button type="button" class="btn btn-danger" (click)="deleteExperience(currentIndex)">Delete</button> 
+                    </div>
+                  </div>
+               </div>
+           </div>
+       </div>
+    </div>
+</section>

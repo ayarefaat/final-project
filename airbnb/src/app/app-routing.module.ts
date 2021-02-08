@@ -22,6 +22,10 @@ const routes: Routes = [
     loadChildren: () => import('../app/components/hosting/hosting.module').then(m => m.HostingModule)
   },
   {
+    path: 'places', 
+    loadChildren: () => import('../app/components/places/places.module').then(m => m.PlacesModule)
+  },
+  {
     path: 'experience', 
     loadChildren: () => import('../app/components/experience/experience.module').then(m => m.ExperienceModule)
   },

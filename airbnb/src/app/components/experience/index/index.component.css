@@ -23,7 +23,6 @@ section#host .content h2{
 section#host .content p{
     font-size: 1.5rem;
     text-align: center;
-    padding: 0 22rem;
     margin-bottom: 4rem;
 }
 section#host .content button{
@@ -33,6 +32,7 @@ section#host .content button{
     font-size: 1.2rem;
     letter-spacing: 1px;
     padding: 0.5rem 1.2rem;
+    margin-bottom: 3rem;
     transition: all ease 0.5s;
     -webkit-transition: all ease 0.5s;
     -moz-transition: all ease 0.5s;
@@ -46,12 +46,13 @@ section#host .content button:hover{
     color: #DE1E45;
 }
 section#pics{
+    margin-top: 5rem;
     background-image: url('/assets/images/32.jpg');
     height: 100vh;
     background-position: center;
     background-size: cover;
     margin-bottom: 10rem;
-    width: 100%;
+    max-width: 100%;
 }
 section#airbnbExp{
     margin-bottom: 6rem;
@@ -59,7 +60,6 @@ section#airbnbExp{
 section#airbnbExp p{
     text-align: center;
     font-size: 1.5rem;
-    padding: 0 19rem;
     margin-bottom: 10rem;
 }
 section#works{
@@ -83,8 +83,8 @@ section#works .content p{
         margin-top: 2rem;
     } section#host .content h2{
         font-size: 3rem;
+    }section#airbnbExp{
+        text-align: center;
     }
-    section#host .content p{
-        padding: 0 10rem;
-    }
+    
 }

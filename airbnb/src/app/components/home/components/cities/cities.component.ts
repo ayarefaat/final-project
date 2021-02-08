@@ -9,6 +9,7 @@ export class CitiesComponent implements OnInit {
   @Input() img:string;
   @Input() city:string;
   @Input() time:string;
+  @Input() link:string
   constructor() { }
 
   ngOnInit(): void {

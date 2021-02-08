@@ -31,23 +31,23 @@ export class SignupComponent implements OnInit {
     })
   }
 
-selectImage(ev){
-  this.image=<File>ev.target.files[0]
-  console.log(this.image)
-}
+// selectImage(ev){
+//   this.image=<File>ev.target.files[0]
+//   console.log(this.image)
+// }
 
-uploadImage(){
-  let formData = new FormData();
-  console.log(formData)
-  formData.append('userImage', this.image);
-  // var options = { content: formData };
-  console.log(this.image,formData)
-  this._userService.uploadImage(formData).subscribe((res:ApiResponse)=>{
-    console.log("error")
-    console.log(res as ApiResponse)
-  })
-  // console.log(formData)
-}
+// uploadImage(){
+//   let formData = new FormData();
+//   console.log(formData)
+//   formData.append('userImage', this.image);
+//   // var options = { content: formData };
+//   console.log(this.image,formData)
+//   this._userService.uploadImage(formData).subscribe((res:ApiResponse)=>{
+//     console.log("error")
+//     console.log(res as ApiResponse)
+//   })
+//   // console.log(formData)
+// }
 
 addUser(){
   let user:User=new User();

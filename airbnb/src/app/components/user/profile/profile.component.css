@@ -41,3 +41,21 @@ div.card .card-body .profile h6 span{
     padding-left: 0.5rem;
     color: #444;
 }
+button.change,button.upload{
+    font-weight: bold;
+    letter-spacing: 1px;
+    font-size: 1.1rem;
+    color: snow;
+    background-color: #DE1E45;
+    border-color: transparent;
+}
+button.change:hover{
+    background-color: transparent;
+    border-color: #DE1E45;
+    color: #DE1E45;
+}
+button.upload:hover{
+    background-color: transparent;
+    border-color:#DE1E45;
+    color: #DE1E45;
+}

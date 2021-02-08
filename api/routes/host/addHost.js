@@ -1,6 +1,40 @@
 const express = require('express');
 const router = express.Router();
 const Host=require('../../models/host');
+const multer  = require('multer');
+const storage=multer.diskStorage({
+    destination:function(req,file,cb){
+        cb(null,"./uploads/")
+    },
+    filename:function(req,file,cb){
+        cb(null,Date.now()+'_'+file.originalname)
+    }
+});
+const upload=multer({storage:storage});
+
+router.put('/photo/:id',upload.single('hostImage'),(req,res)=>{
+    let id =req.params.id
+    console.log(id)
+    let fileUrl = req.file.path.replace(/\\/g, "").substring(`uploads`.length).split('_')[1]
+    console.log(fileUrl)
+   Host.findOneAndUpdate({hostID:id},{hostImage:fileUrl},{new:true},(err,host)=>{
+        if(err){
+            res.json({
+                data:null,
+                authorized:false,
+                message:"Can't update your image",
+                success:false,
+            })
+        }else{
+            res.json({
+                data:host,
+                authorized:true,
+                message:"successfully updated your image",
+                success:true
+            })
+        }
+    })
+});
 
 router.post('/',(req,res)=>{
     // console.log(req.user)
@@ -14,7 +48,10 @@ router.post('/',(req,res)=>{
         numberOfNights:req.body.numberOfNights,
         activities:req.body.activities,
         description:req.body.description,
-        createdBy:req.user.id
+        createdBy:req.user.id,
+        hostName:req.user.firstName,
+        hostEmail:req.user.email,
+        hostStatus:"Pending",
     },(err,host)=>{
         if(err){
             res.json({
@@ -95,7 +132,7 @@ router.put('/:id',(req,res)=>{
             })
         }
     })
-})
+});
 router.delete('/:id',(req,res)=>{
     let id =req.params.id
     // console.log(id)
@@ -137,6 +174,6 @@ router.get('/:id',(req,res)=>{
             })
         }
     })
-})
+});
 
 module.exports=router;

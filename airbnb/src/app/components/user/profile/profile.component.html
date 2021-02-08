@@ -8,9 +8,24 @@
     <div class="container" *ngIf="user.length>0">
         <div class="row">
             <div class="col-lg-4">
-                <div class="card" >
-                    <img class="card-img-top rounded" width="100%" [src]=url alt="Card image cap" *ngIf="isVisible">
-                    <input  type="file" id="photo" class="form-control" (change)="upload($event)" *ngIf="!isVisible">
+                <div class="card"  >
+                    <img class="card-img-top "  width="50%" src="/assets/images/{{user[0].userImage}}" alt="Card image cap" *ngIf="!isVisible">
+                    <div class="container">
+                        <form [formGroup]="form" *ngIf="isVisible">
+                            <div class="form-group">
+                                <label for="photo" ><h4>Upload your photo:</h4></label>
+                               <div class="row justify-content-around">
+                                <input formControlName="userImage" type="file"  class="form-control col-lg-10 col-sm-12" (change)="upload($event)" >
+                                <!-- <img [src]=url alt=""> -->
+                                <button  type="button" class="btn mt-2 upload" (click)="updateImage()">upload</button>
+                               </div>
+                              </div>
+                        </form>
+                        <button type="button" class="btn btn-warning mt-2 change" (click)="changeImage()"  *ngIf="!isVisible" >Change</button>
+                    </div>
+                   
+                    <!-- <input  type="file" id="photo" class="form-control" (change)="upload($event)" *ngIf="!isVisible">
+                    <button type="button" class="btn btn-success" *ngIf="!isVisible" (click)="updateImage()">upload</button> -->
                     <div class="card-body">
                       <h2 class="card-title">Profile</h2>
                       <div class="profile">

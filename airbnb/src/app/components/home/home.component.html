@@ -1,12 +1,12 @@
 <section id="content">
     <h1>go <br>near</h1>
-    <button class="btn">Explore nearby stays</button>
+    <button class="btn" routerLink="/places">Explore nearby stays</button>
 </section>
 <section id="cities">
    <div class="container">
     <div class="row">
-        <div id="city" class="col-md-4"  *ngFor="let item of cities">
-            <app-cities [img]="item.img" [city]="item.h5" [time]=item.p></app-cities>
+        <div id="city" class="col-md-3"  *ngFor="let item of cities">
+            <app-cities [img]="item.img" [city]="item.h5" [time]=item.p [link]=item.link></app-cities>
         </div>
     </div>
    </div>

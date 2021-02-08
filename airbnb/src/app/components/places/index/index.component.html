@@ -1,0 +1,24 @@
+<section id="places">
+    <div class="container-fluid">
+        <div class="icon">
+            <a routerLink="/"><i class="fab fa-airbnb"></i></a>
+        </div>
+    </div>
+    <div class="container">
+        <h2>Places to stay near you</h2>
+       <div class="content">
+        <div class="row mt-5">
+            <div class="col-lg-3 col-md-6 mb-4" *ngFor="let item of approvedHosts">
+                <div class="card" >
+                   <div class="img" style="height: 200px;overflow: hidden;"> <img class="card-img-top" width="100%" src="/assets/images/{{item.hostImage}} " alt="Card image"></div>
+                    <div class="card-body">
+                      <h6 class="card-title">{{item.propertyType}} -<span> {{item.address}}</span></h6>
+                      <p class="card-text">{{item.totalPrice}}$ / {{item.numberOfNights}} nights</p>
+                      <button [routerLink]="['/places/placeDetails',item.hostID]" routerLinkActive="router-link-active" class="details btn btn-primary">Details</button>
+                    </div>
+                  </div>
+            </div>
+        </div>
+       </div>
+    </div>
+</section>

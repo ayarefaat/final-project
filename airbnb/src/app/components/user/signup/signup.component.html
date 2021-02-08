@@ -67,14 +67,7 @@
                             <small class="form-text text-danger" *ngIf="form.controls['Email'].hasError('required')">required email</small>
                         </div> -->
                         </div>
-                        <div class="form-group">
-                            <label for="photo"><h4>Upload your photo:</h4></label>
-                           <div class="row justify-content-around">
-                            <input formControlName="userImage" type="file"  class="form-control col-lg-10 col-sm-12" (change)="selectImage($event)" >
-                            <!-- <img [src]=url alt=""> -->
-                            <button  type="button" class="btn col-lg-2 col-sm-12" (click)="uploadImage()">upload</button>
-                           </div>
-                          </div>
+                        
                         <button [disabled]="form.invalid" type="submit" class="btn " (click)="addUser()">Register Now!</button>
                         </form>
                     </div>

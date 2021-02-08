@@ -9,5 +9,8 @@ export class Host{
     numberOfNights:string;
     description:string;
     activities:any;
-    userImage:any
+    hostName:string;
+    hostEmail:string;
+    hostStatus:any;
+    hostImage:any
  }

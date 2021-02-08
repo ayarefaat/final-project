@@ -1,0 +1,110 @@
+<section id="experience">
+    <div class="container-fluid">
+        <div class="icon">
+            <a routerLink="/"><i class="fab fa-airbnb"></i></a>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-5 col-md-12 earn">
+                    <h3>Start sharing your <span>Experience</span> </h3>
+                </div>
+                <div class="col-lg-7">
+                    <div id="form" *ngIf="!isVisible">
+                        <div class="container">
+                            <h4>Tell us more about your experience</h4>
+                            <form [formGroup]="form">
+                                <div class="form-group">
+                                    <label for="place">
+                                        <h5>place :</h5>
+                                    </label>
+                                    <select class="form-control" id="exampleFormControlSelect1" formControlName="place">
+                                        <option>Dahab</option>
+                                        <option>Sharm el-shekih</option>
+                                        <option>Hurghada</option>
+                                        <option>Alex</option>
+                                        <option>Matrouh</option>
+                                        <option>North coast</option>
+                                        <option>Ras Sedr</option>
+                                        <option>El-Alamein</option>
+                                    </select>
+                                </div>
+                                <div class="form-group mb-4">
+                                    <label for="typeOfExperience">
+                                        <h5>Type of Experinece :</h5>
+                                    </label>
+                                    <select class="form-control" id="typeOfExperience"
+                                        formControlName="typeOfExperience">
+                                        <option>Food</option>
+                                        <option>Society and Culture</option>
+                                        <option>Sports</option>
+                                        <option>Literature</option>
+                                        <option>Animals</option>
+                                        <option>Art and Design</option>
+                                        <option>Entertainment</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="description">
+                                        <h5>Description :</h5>
+                                    </label>
+                                    <textarea formControlName="description" type="text" class="form-control" rows="4"
+                                        placeholder="Tell us more about your Experience"></textarea>
+                                    <div
+                                        *ngIf="form.controls['description'].invalid && (form.controls['description'].touched || form.controls['description'].dirty)">
+                                        <small class="form-text text-danger"
+                                            *ngIf="form.controls['description'].hasError('required')">required </small>
+                                    </div>
+                                </div>
+                                <button [disabled]="form.invalid" type="submit" class="btn" (click)="addExperience()">Next!</button>
+                            </form>
+                        </div>
+                    </div>
+                    <div id="imgForm" *ngIf="isVisible">
+                        <div class="container">
+                            <form [formGroup]="form">
+                                <div class="form-group">
+                                    <label for="photo">
+                                        <h4>Upload your photo:</h4>
+                                    </label>
+                                    <div class="row justify-content-around">
+                                        <input formControlName="placeImage" type="file"
+                                            class="form-control col-lg-10 col-sm-12" (change)="selectImage($event)">
+                                    </div>
+                                </div>
+                            </form>
+                            <button type="submit" routerLink="/experience/confirm" class="btn text-muted" (click)="start()">Start Experience!</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+<section id="contact ">
+<div class="container py-5">
+    <div class="row">
+        <div class="col-md-6">
+            <img src="/assets/images/exp.jpg" class="w-100">
+
+        </div>
+        <div class="col-md-6 my-5">
+            <div class="submit">
+                <h4 class="py-2">Submit your experience  </h4>
+                <p>You're almost there! Once everything else is completed,
+                     you're ready to submit.Our team will read it over and let you know if it’s been approved in 2–4 days.</p>
+            </div>
+        </div>
+    </div>
+</div>
+</section>
+
+<section id="explore">
+<div class="container p-1 text-center">
+    <h2 class="text-center text-white py-3">Learn more about <br> hosting with Airbnb <br>Experiences</h2>
+    <button class="btn go"> Let's go</button>
+</div>
+</section>

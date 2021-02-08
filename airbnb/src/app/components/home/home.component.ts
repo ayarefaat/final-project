@@ -9,18 +9,20 @@ import { Routes } from '@angular/router';
 export class HomeComponent implements OnInit {
   // cities section
 cities=[
-  {img:"/assets/images/2.webp",h5:"Hurghada",p:"5.5 hour drive"},
-  {img:"/assets/images/3.jpg",h5:"Marina",p:"2 hour drive"},
-  {img:"/assets/images/4.jpg",h5:"Sharm el-shekih",p:"7 hour drive"},
-  {img:"/assets/images/5.jpg",h5:"Matrouh",p:"6 hour drive"},
-  {img:"/assets/images/6.jpg",h5:"Alex",p:"2.5 hour drive"},
-  {img:"/assets/images/7.jpg",h5:"Hurghada",p:"5.5 hour drive"},
+  {img:"/assets/images/2.webp",h5:"Hurghada",p:"5.5 hour drive",link:"/places/city/Hurghada"},
+  {img:"/assets/images/3.jpg",h5:"North Coast",p:"2 hour drive" ,link:"/places/city/North coast"},
+  {img:"/assets/images/4.jpg",h5:"Sharm el-shekih",p:"7 hour drive",link:"/places/city/Sharm el-shekih"},
+  {img:"/assets/images/5.jpg",h5:"Matrouh",p:"6 hour drive",link:"/places/city/Matrouh"},
+  {img:"/assets/images/6.jpg",h5:"Alex",p:"2.5 hour drive",link:"/places/city/Alex"},
+  {img:"/assets/images/7.jpg",h5:"Dahab",p:"6.5 hour drive",link:"/places/city/Dahab"},
+  {img:"/assets/images/8.jpg",h5:"Ras Sedr",p:"5 hour drive",link:"/places/city/Ras Sedr"},
+  {img:"/assets/images/10.jpg",h5:"El-Alamein",p:"4.5 hour drive",link:"/places/city/El-Alamein"},
 ];
 //section live
 places=[
-  {img:"/assets/images/11.jpg",desc:"Entire homes",router:"/user/login"},
-  {img:"/assets/images/12.jpg",desc:"Cabines and cottage",router:"/user/login"},
-  {img:"/assets/images/13.jpg",desc:"unique stays",router:"/user/login"},
+  {img:"/assets/images/11.jpg",desc:"Entire homes",router:"/places/propertyType/Apartment"},
+  {img:"/assets/images/12.jpg",desc:"Cabines and cottage",router:"/places/propertyType/Cabines and Cottage"},
+  {img:"/assets/images/13.jpg",desc:"unique stays",router:"/places/propertyType/Unique Stays"},
 ];
 //section explore
 explore=[

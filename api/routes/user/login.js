@@ -53,7 +53,6 @@ getSignedToken= user=>{
         mobile:user.mobile,
         age:user.age,
         gender:user.gender,
-        // userImage:user.userImage
     },SECRET_KEY)
 }
 
