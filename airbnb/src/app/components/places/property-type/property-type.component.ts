@@ -11,10 +11,13 @@ import { Host } from '../../models/host';
 })
 export class PropertyTypeComponent implements OnInit {
 
+  pageNumber:number=4;
+currentPg:number=1;
   constructor(private _activatedRoute:ActivatedRoute,private _hostService:HostService) { }
   propertyType:string;
   places:Host[]=[];
-  propertyTypes=[]
+  propertyTypes=[];
+  isLoaded:boolean=false
     ngOnInit(): void {
       this._activatedRoute.paramMap.subscribe(params=>{
         this.propertyType=params.get('type')
@@ -35,6 +38,7 @@ export class PropertyTypeComponent implements OnInit {
             }
           };
           console.log(this.propertyTypes)
+          this.isLoaded=true
         })
         
       });

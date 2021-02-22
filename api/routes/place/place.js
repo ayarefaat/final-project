@@ -9,6 +9,8 @@ router.post('/',(req,res)=>{
         city:req.body.city,
         street:req.body.street,
         apartmentNumber:req.body.apartmentNumber,
+        startDate:req.body.startDate,
+        endDate:req.body.endDate,
         createdBy:req.user.id,
         clientName:req.user.firstName,
         clientEmail:req.user.email,
@@ -38,6 +40,7 @@ router.post('/',(req,res)=>{
     })
 });
 
+//to get trips for specific user
 router.get('/trips',(req,res)=>{
     Place.find({createdBy:req.user.id},(err,place)=>{
         if(err){
@@ -55,6 +58,8 @@ router.get('/trips',(req,res)=>{
         }
     })
 });
+
+//to get specific trip in my profile (placeID is unique for each reservation)
 router.get('/:id',(req,res)=>{
     let id =req.params.id
     Place.findOne({placeID:id},(err,place)=>{
@@ -73,6 +78,28 @@ router.get('/:id',(req,res)=>{
         }
     })
 });
+
+
+//to get all users who reserved for specific trip
+router.get('/reservedTrips/:id',(req,res)=>{
+    let id =req.params.id
+    Place.find({tripNumber:id},(err,place)=>{
+        if(err){
+            res.json({
+                data:null,
+                message:"Can't get your address",
+                success:false
+            })
+        }else{
+            res.json({
+                data:place,
+                message:"Successufully get your address",
+                success:true
+            })
+        }
+    })
+});
+
 
 router.delete('/:id',(req,res)=>{
     let id=req.params.id

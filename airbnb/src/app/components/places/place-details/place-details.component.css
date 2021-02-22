@@ -47,7 +47,7 @@ section#reserve .rules ul p{
 section#reserve span.name{
     color: #DE1E45;
 }
-button.reserve{
+button.reserve,button.comment{
     color: snow;
     background-color: #DE1E45;
     text-align: center;
@@ -63,10 +63,14 @@ button.reserve{
     -ms-transition: all ease 0.5s;
     -o-transition: all ease 0.5s;
 }
-button.reserve:hover{
+button.reserve:hover,button.comment:hover{
     border-color: #DE1E45;
     color: #DE1E45;
     background-color: snow;
+}
+button.comment{
+    font-size: 1.1rem;
+    padding: 0.7rem 1.5rem;
 }
 h4.contact{
     font-weight: bold;
@@ -83,4 +87,11 @@ img{
 }
 h5 span{
     color: #DE1E45;
+}
+.media-body h5{
+    color: #DE1E45;
+    font-weight: bold;
+}
+button.delete{
+    margin-top: 2rem;
 }

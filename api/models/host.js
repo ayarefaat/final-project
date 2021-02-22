@@ -33,10 +33,6 @@ let hostSchema= new mongoose.Schema({
         type:String,
         required:true
     },
-    numberOfNights:{
-        type:String,
-        required:true
-    },
     activities:{
         type:[{
             type:String

@@ -1,14 +1,20 @@
 section#confirm{
     background-color: #F8EDE3;
     height: 70vh;
+    margin-top: -5rem;
 }
 h3{
     font-size: 3rem;
+    padding: 1rem;
+}
+h5{
+    line-height: 2rem;
 }
 h3 span{
     color:#DE1E45;
 }
 .content{
+    padding-top:3.5rem ;
     text-align: center;
     margin-top: 5rem;
 }

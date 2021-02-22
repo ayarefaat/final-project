@@ -33,16 +33,21 @@ button[type="submit"]{
     -ms-transition: all ease 0.5s;
     -o-transition: all ease 0.5s;
 }
-button[type="button"]{
-    background-color: #DE1E45;
-    color: snow;
-    font-weight: bold;
-    font-size: 1rem;
-    letter-spacing: 2px;
-    
-}
+
 button:hover{
     background-color: #fff;
     border-color:#DE1E45 ;
     color:#DE1E45 ;
+}
+span{
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #DE1E45;
+}
+.btncalc
+{
+    background-color: #fff;
+    border-color:#DE1E45 ;
+    color:#DE1E45 ;
+    font-weight: bold;
 }

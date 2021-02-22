@@ -3,6 +3,8 @@ export class Place{
     city:string;
     street:string;
     apartmentNumber:string;
+    startDate:string;
+    endDate:string;
     clientName:string;
     clientEmail:string;
     tripLocation:string;

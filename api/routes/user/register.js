@@ -67,7 +67,11 @@ router.post('/',(req,res)=>{
                     // userImage:req.file.path
                 },(err,user)=>{
                     if(err){
-                        res.json(err)
+                        res.json({
+                            data:err,
+                            message:"Invalid data ",
+                            success:false
+                        })
                     }else{
                         res.json({
                             data:user,

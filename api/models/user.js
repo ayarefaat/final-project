@@ -26,9 +26,10 @@ let userSchema=new mongoose.Schema({
     password:{
         type:String,
         required:true,
+        minlength:8,
     },
     mobile:{
-        type:Number,
+        type:String,
         required:true,
         validate:[numberValidator,'incorrect phone number']
     },
@@ -55,6 +56,6 @@ function emailValidator(value){
     return /\S+@\S+\.\S+/.test(value)
 }
 function numberValidator(number){
-    return /^\d([- ]*\d){11,12}$/.test(number)
+    return  /^01(0|1|2)\d{8}$/.test(number)
 }
 module.exports=mongoose.model('User', userSchema)

@@ -1,8 +1,6 @@
-<section id="hosting">
+<section id="hosting" class="pt-5">
     <div class="container-fluid">
-        <div class="icon">
-            <a routerLink="/"><i class="fab fa-airbnb"></i></a>
-        </div>
+        
         <div class="container">
             <div class="row">
                 <div class="col-lg-5 col-md-12 earn">
@@ -59,30 +57,25 @@
                                     </div>
                                   </div>
                                 <div class="form-group">
-                                  <label for="totalPrice"><h5>Total Price:</h5></label>
+                                  <label for="totalPrice"><h5>Price Per Night:</h5></label>
                                   <input formControlName="totalPrice"  type="text" id="totalPrice" class="form-control"   placeholder="Enter total price">
                                   <div *ngIf="form.controls['totalPrice'].invalid && (form.controls['totalPrice'].touched || form.controls['totalPrice'].dirty)">
                                     <small  class="form-text text-danger" *ngIf="form.controls['totalPrice'].hasError('required')" >Required field</small>
                                   </div>
                                 </div>
-                                <div class="form-group">
-                                  <label for="numberOfNights"><h5>Number of nights:</h5></label>
-                                  <input formControlName="numberOfNights"  type="text" id="numberOfNights" class="form-control"   placeholder="Enter number of nights">
-                                  <div *ngIf="form.controls['numberOfNights'].invalid && (form.controls['numberOfNights'].touched || form.controls['numberOfNights'].dirty)">
-                                    <small  class="form-text text-danger" *ngIf="form.controls['numberOfNights'].hasError('required')" >Required field</small>
-                                  </div>
-                                </div>
+                               
                                
                                 <div class="form-group">
                                   <label for="description"><h5>Description :</h5></label>
                                   <textarea formControlName="description"  type="text"  class="form-control" rows="4" placeholder="Tell us more about your place" ></textarea>
                                   <div *ngIf="form.controls['description'].invalid && (form.controls['description'].touched || form.controls['description'].dirty)">
                                     <small class="form-text text-danger" *ngIf="form.controls['description'].hasError('required')">required </small>
+                                    <small class="form-text text-danger" *ngIf="form.controls['description'].hasError('minlength')">min length must be 30 </small>
                                 </div>
                                 </div>
                                 <div class="form-group mb-4">
                                   <label for="description"><h5>Activities :</h5></label>
-                                 <select class="form-control" id="exampleFormControlSelect1" formControlName="activities" multiple size="1">
+                                 <select class="form-control py-4" id="exampleFormControlSelect1" formControlName="activities" multiple size="1">
                                     <option>Gym</option>
                                     <option>Beachfront</option>
                                     <option>Hot tup</option>

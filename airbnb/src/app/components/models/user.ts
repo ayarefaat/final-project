@@ -4,7 +4,7 @@ export class User{
    lastName:string;
    email:string;
    password:string;
-   mobile:number;
+   mobile:any;
    age:number;
    gender:string;
    userImage:any

@@ -1,11 +1,5 @@
 <section>
     <div class="container-fluid">
-        <a routerLink="/"> <img src="/assets/images/logo.png" alt="" width="120"></a>
-        <hr>
-    </div>
-</section>
-<section>
-    <div class="container-fluid">
         <div class="row justify-content-around">
             <div id="form" class="col-md-6">
                 <div class="container">
@@ -27,6 +21,8 @@
                           </div>
                         
                         <button [disabled]="form.invalid" type="submit" class="btn " (click)="signIn()" >Login!</button>
+                        <p class="d-inline-block registerp">If you didn't have an account </p> 
+                        <a routerLink="/user/signup" class="registera">Register now</a>
                         </form>
                     </div>
             </div>

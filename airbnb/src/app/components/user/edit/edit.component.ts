@@ -13,7 +13,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class EditComponent implements OnInit {
 userID:number;
 user:User=new User()
-form:FormGroup
+form:FormGroup;
+isLoaded:boolean=false
   constructor(private _activatedRoute:ActivatedRoute, private _userService:UserService,private _formBuilder:FormBuilder ,private _router:Router) { }
 
   ngOnInit(): void {
@@ -21,7 +22,8 @@ form:FormGroup
       this.userID=+params.get('id')
       this._userService.getProfile().subscribe((response:ApiResponse)=>{
         this.user=response.data
-        console.log(this.user)
+        console.log(this.user);
+        this.isLoaded=true
         this.postUsers()
         
       })

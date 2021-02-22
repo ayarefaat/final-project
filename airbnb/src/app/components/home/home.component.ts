@@ -26,15 +26,15 @@ places=[
 ];
 //section explore
 explore=[
-  {img:"/assets/images/15.jpg",title:"Online Expreience",desc:"Travel the world without leaving home."},
-  {img:"/assets/images/16.jpg",title:"Experiences",desc:"Things to do wherever you are."},
-  {img:"/assets/images/17.jpg",title:"Adventures",desc:"Multi-day trips with meals and stays."},
+  {img:"/assets/images/15.jpg",title:"Online Expreience",desc:"Travel the world without leaving home.",router:"/online-experience/allOnlineExperience"},
+  {img:"/assets/images/16.jpg",title:"Places",desc:"Reserve your place now!.",router:"/places"},
+  {img:"/assets/images/17.jpg",title:"Experiences",desc:"Multi-day trips with meals and stays.",router:"/experience/allExperience"},
 ];
 //section host
 host=[
   {img:"/assets/images/18.jpg",desc:"Host you home",router:"/hosting"},
   {img:"/assets/images/19.jpg",desc:"Host an Experience",router:"/experience"},
-  {img:"/assets/images/20.jpg",desc:"Host an adventure"},
+  {img:"/assets/images/100.jpg",desc:"Host an online experience",router:"/online-experience/addOnlineExperience"},
 ]
   constructor() { }
  

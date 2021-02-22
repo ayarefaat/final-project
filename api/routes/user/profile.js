@@ -42,13 +42,15 @@ router.put('/photo/:id',upload.single('userImage'),(req,res)=>{
     let id =req.params.id
     console.log(id)
     console.log(req.file)
-    let fileUrl = req.file.path.replace(/\\/g, "").substring(`uploads`.length).split('_')[1]
+    let fileUrl = req.file.path.replace(/\\/g, "").substring(`uploads`.length)
     console.log(fileUrl)
-    User.findOneAndUpdate({userID:id},{userImage:fileUrl},(err,image)=>{
+    User.findOneAndUpdate({userID:id},{userImage:fileUrl},{new:true},(err,image)=>{
         if(!err){
             res.json({
+                data:image,
                 message:"Successfully uploaded image",
                 success:true
+                
             })
         }else{
             res.json({

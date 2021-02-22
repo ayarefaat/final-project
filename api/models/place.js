@@ -1,4 +1,4 @@
-const { text } = require('body-parser');
+// const { text } = require('body-parser');
 const mongoose =require('mongoose');
 // const User = require('../models/user')
 const autoIncrement = require('mongoose-auto-increment');
@@ -26,6 +26,16 @@ let placeSchema= new mongoose.Schema({
         type:Number,
         required:true
     },
+    startDate:{
+        type:Date,
+        required:true
+
+    },
+    endDate:{
+        type:Date,
+        required:true
+
+    },
     createdBy:{type:mongoose.SchemaTypes.ObjectId ,ref:'User'
     },
     clientName:{
@@ -49,6 +59,7 @@ let placeSchema= new mongoose.Schema({
     tripNumber:{
         type:Number
     },
+    
     // trip:
     //     { type:mongoose.SchemaTypes.ObjectId, ref: 'Host' }
 });

@@ -10,7 +10,14 @@ import { HostService } from './../../../services/host.service';
 })
 export class IndexComponent implements OnInit {
 places:Host[]=[];
-approvedHosts=[]
+approvedHosts=[];
+pageNumber:number=8;
+currentPg:number=1;
+isLoaded:boolean=false;
+address='';
+SortbyParam:'';
+sortDirection='asc';
+searchCity='';
   constructor(private _hostService:HostService) { }
 
   ngOnInit(): void {
@@ -29,8 +36,21 @@ approvedHosts=[]
           this.approvedHosts.push(this.places[i])
         }
       };
+      this.isLoaded=true
       console.log(this.approvedHosts)
     })
   }
+  onSortDirection(){
+    if(this.sortDirection==='desc'){
+       this.sortDirection ='asc';
+    }
+    else{
+      this.sortDirection='desc'
+    }
+  }
+
+onCityFilter(){
+    this.searchCity=this.address;
+  }  
 
 }

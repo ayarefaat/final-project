@@ -6,7 +6,6 @@ export class Host{
     numberOfBedrooms:string;
     numberOfBathrooms:string;
     totalPrice:string;
-    numberOfNights:string;
     description:string;
     activities:any;
     hostName:string;

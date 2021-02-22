@@ -1,16 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { ExperienceService } from 'src/app/services/experience.service';
 import { ApiResponse } from '../../models/ApiResponse';
-import { Experience } from '../../models/experience';
-
 @Component({
   selector: 'app-my-experience',
   templateUrl: './my-experience.component.html',
   styleUrls: ['./my-experience.component.css']
 })
 export class MyExperienceComponent implements OnInit {
-  experiences:Experience[]=[];
-
+  experiences=[];
+  startDate:any;
+  endDate:any;
+  isLoaded:boolean=false
+  pageNumber:number=3;
+  currentPg:number=1;
   constructor( private _experienceService:ExperienceService) { }
 
   ngOnInit(): void {
@@ -18,7 +20,8 @@ export class MyExperienceComponent implements OnInit {
       console.log((res as ApiResponse).data)
       let currentExperience=(res as ApiResponse).data;
       this.experiences.push(currentExperience);
-      console.log(this.experiences[0][0])
+      console.log(this.experiences[0])
+      this.isLoaded=true
     })
   }
 
@@ -32,7 +35,7 @@ export class MyExperienceComponent implements OnInit {
     
      this._experienceService.deleteExperience(experienceId).subscribe(res=>{
       console.log(res);
-       this.experiences.splice(index,1);
+       this.experiences[0].splice(index,1);
        console.log(res);
      })
 

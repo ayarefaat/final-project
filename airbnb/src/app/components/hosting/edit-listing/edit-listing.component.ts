@@ -13,7 +13,8 @@ import { HostService } from './../../../services/host.service';
 export class EditListingComponent implements OnInit {
 form:FormGroup;
 hostID:number
-host:Host=new Host()
+host:Host=new Host();
+isLoaded:boolean=false
   constructor(private _activatedRoute:ActivatedRoute, private _hostService:HostService,private _router:Router,private _formBuilder:FormBuilder) { }
 
   ngOnInit(): void {
@@ -22,6 +23,7 @@ host:Host=new Host()
       this._hostService.getHostById(this.hostID).subscribe((response:ApiResponse)=>{
         this.host=response.data
         console.log(this.host)
+        this.isLoaded=true
          this.updateHost()
         
       })
@@ -36,7 +38,6 @@ updateHost(){
     numberOfBedrooms:[this.host.numberOfBedrooms,[Validators.required]],
     numberOfBathrooms:[this.host.numberOfBathrooms,[Validators.required]],
     totalPrice:[this.host.totalPrice,[Validators.required]],
-    numberOfNights:[this.host.numberOfNights,[Validators.required]],
     description:[this.host.description,[Validators.required]],
     activities:[this.host.activities]
   })

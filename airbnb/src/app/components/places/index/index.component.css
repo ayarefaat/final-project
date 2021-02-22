@@ -14,15 +14,29 @@ section#places .icon a{
     -o-border-radius: 15px;
     border-color: #aaa;
     box-shadow: 5px 5px 5px 5px #aaa,-10px 10px 10px -10px #aaa;
+    overflow: hidden;
     /* background-color: snow; */
 }
-img{
-    border-radius: 15px;
-    -webkit-border-radius: 15px;
-    -moz-border-radius: 15px;
-    -ms-border-radius: 15px;
-    -o-border-radius: 15px;
+.my-paragraph
+{
+    white-space: nowrap;
+    width: 15em;
+    overflow: hidden;
+    text-overflow:ellipsis;
 }
+/* 
+img{
+ 
+    display: inline-block;
+    max-width: 100%;
+    margin-top: -20px;
+
+}
+.img{
+    max-width: 500px;
+    height: 150px;
+    overflow: hidden;
+} */
 button.details{
     font-weight: bold;
     color: snow;
@@ -38,4 +52,9 @@ button.details:hover{
     border-color: #DE1E45;
     color: #DE1E45;
     background-color: transparent;
+}
+.paginate{
+    color: #444;
+    font-weight: bold;
+    font-size: large;
 }

@@ -20,7 +20,46 @@ let experienceSchema= new mongoose.Schema({
     description:{
         type:String,
         required:true
+    },  
+    capacity:{
+        type:Number,
+        required:true
+    }, 
+    transportation:{
+        type:String,
+        required:true
+    },  
+    pets:{
+        type:String,
+        required:true
+    }, 
+    language:{
+        type:String,
+        required:true
     },
+    catering:{
+        type:String,
+        required:true
+    },
+    totalPrice:{
+        type:Number,
+        required:true
+    },
+    startDate:{
+        type:Date,
+        required:true
+
+    },
+    endDate:{
+        type:Date,
+        required:true
+
+    },
+    // rangeDate:{
+    //     type:Date,
+    //     required:true
+
+    // },
     createdBy:{type:mongoose.SchemaTypes.ObjectId ,ref:'User'
     },
     experienceStatus:{

@@ -1,13 +1,20 @@
 section#trips{
     background-color:#F8EDE3 ;
     /* height: 200vh; */
+    margin-top: -1rem;
+    padding-bottom: 5rem;
+}
+.paginate{
+    color: #444;
+    font-weight: bold;
+    font-size: large;
 }
 
 section#trips h2{
     font-weight: bold;
     font-size: 3rem;
-    color: #DE1E45;
-    padding-bottom: 1rem;
+    color: #444;
+    padding-bottom: 40px;
     border-bottom: 1px solid #aaa;
 }
 div.card{
@@ -50,3 +57,7 @@ button:hover{
     border-color: #DE1E45;
 }
 
+.noListing h3{
+    color: #444;
+    font-weight: bold;
+}

@@ -1,15 +1,14 @@
 <section>
-    <div class="container-fluid">
-        <a routerLink="/"> <img src="/assets/images/logo.png" alt="" width="140"></a>
-        <hr>
+    <div class="container text-center" *ngIf="!isLoaded">
+        <div class="spinner-border text-dark mb-3" role="status" >
+        </div>
+        <h6>Loading........</h6>
     </div>
-</section>
-<section>
-    <div class="container" *ngIf="user.length>0">
+    <div class="container pt-4" *ngIf="user.length>0 && isLoaded">
         <div class="row">
             <div class="col-lg-4">
                 <div class="card"  >
-                    <img class="card-img-top "  width="50%" src="/assets/images/{{user[0].userImage}}" alt="Card image cap" *ngIf="!isVisible">
+                    <img class="card-img-top "  width="50%" src="http://localhost:7000/uploads/{{user[0].userImage}}" alt="Card image cap" *ngIf="!isVisible">
                     <div class="container">
                         <form [formGroup]="form" *ngIf="isVisible">
                             <div class="form-group">

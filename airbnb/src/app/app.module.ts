@@ -9,7 +9,9 @@ import {HttpClientModule} from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import{SharedModule} from './shared/shared.module';
-import { MaxLengthPipe } from './max-length.pipe';
+// import { MaxLengthPipe } from './shared/max-length.pipe';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NavbarComponent } from './components/shared/navbar/navbar.component';
 
 
 
@@ -18,14 +20,16 @@ import { MaxLengthPipe } from './max-length.pipe';
     AppComponent,
     LayoutComponent,
     FooterComponent,
-    MaxLengthPipe,
+    NavbarComponent,
+    
 
   ],
   imports: [
   BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    SharedModule
+    SharedModule,
+    BrowserAnimationsModule
     
   ],
   providers: [],

@@ -1,15 +1,14 @@
 <section>
-    <div class="container-fluid">
-        <a routerLink="/"> <img src="/assets/images/logo.png" alt="" width="120"></a>
-        <hr>
+  <div class="container text-center" *ngIf="!isLoaded">
+    <div class="spinner-border text-dark mb-3" role="status" >
     </div>
-</section>
-<section>
+    <h6>Loading........</h6>
+  </div>
     <div class="container-fluid" *ngIf="form">
         <div class="row justify-content-around">
-            <div id="form" class="col-md-6">
+            <div id="form" class="col-md-6" *ngIf="isLoaded">
                 <div class="container">
-                    <h2>Edit</h2>
+                    <h2>Edit your profile</h2>
                     <form [formGroup]="form">
                         <div class="form-group">
                           <label for="firstName"><h4>First Name:</h4></label>

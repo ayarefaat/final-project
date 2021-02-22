@@ -6,35 +6,57 @@ import { ApiService } from './api.service';
 })
 export class ExperienceService {
 
-  constructor(private _apiService:ApiService) { 
-  }
+  constructor(private _apiService: ApiService) { }
 
-  addExp(exp:any)
+  addExp(exp: any)
   {
-    return this._apiService.postWithToken("experiences",exp)
-
+    return this._apiService.postWithToken('experiences', exp);
   }
 
   getuserExp()
   {
-    return this._apiService.get("experiences/userExp")
+    return this._apiService.get('experiences/userExp');
+  }
+  getAllExperiences()
+  {
+    return this._apiService.get('experiences/allExperiences')
   }
 
-  editUserExperience(experience:any)
+  editUserExperience(experience: any)
   {
-    return this._apiService.put(`experiences/${experience.experienceID}`,experience)
+    return this._apiService.put(`experiences/${experience.experienceID}`, experience);
   }
 
-  getExperienceById(id:number)
+  getExperienceById(id: number)
   {
-    return this._apiService.get(`experiences/${id}`)
+    return this._apiService.get(`experiences/${id}`);
   }
-  deleteExperience(id:number)
+  deleteExperience(id: number)
   {
-    return this._apiService.delete(`experiences/${id}`)
+    return this._apiService.delete(`experiences/${id}`);
   }
 
-  uploadImage(id:number,image:any){
-    return this._apiService.put(`experiences/photo/${id}`,image)
+  reserveExperience(data: any)
+  {
+    return this._apiService.postWithToken(`experience/reserve`, data);
+  }
+
+  getReserveExperience()
+  {
+    return this._apiService.get('experience/reserve/reservedExperience');
+  }
+
+  getReservedExperienceById(id: number)
+  {
+    return this._apiService.get(`experience/reserve/${id}`);
+  }
+
+  deleteReserveExperience(id: number)
+  {
+    return this._apiService.delete(`experience/reserve/${id}`);
+  }
+
+  uploadImage(id: number, image: any){
+    return this._apiService.put(`experiences/photo/${id}`, image);
   }
 }

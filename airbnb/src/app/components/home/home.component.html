@@ -1,6 +1,6 @@
 <section id="content">
     <h1>go <br>near</h1>
-    <button class="btn" routerLink="/places">Explore nearby stays</button>
+    <button class="btn" routerLink="/places">Explore new Places</button>
 </section>
 <section id="cities">
    <div class="container">
@@ -27,7 +27,7 @@
         <p>Unique activities with local experts—in person or online.</p>
        <div class="row">
         <div class="col-md-4" *ngFor="let item of explore" >
-            <app-card [img]="item.img" [title]="item.title" [description]="item.desc"></app-card>
+            <app-card [img]="item.img" [title]="item.title" [description]="item.desc" [router]=item.router></app-card>
         </div>
        </div>
     </div>

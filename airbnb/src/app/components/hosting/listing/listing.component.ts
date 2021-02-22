@@ -12,18 +12,21 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 })
 export class ListingComponent implements OnInit {
 
-hosts:Host[]=[];
+hosts=[];
 image:null;
 isVisible:boolean;
 url:any;
-ID:number
+ID:number;
+pageNumber:number=3;
+currentPg:number=1;
 // hostImage:null
 // change(){
  
 // }
 
   constructor(private _hostService:HostService, private _router:Router, private  _formBuilder:FormBuilder) { }
-form:FormGroup
+form:FormGroup;
+isLoaded:boolean=false
   ngOnInit(): void {
 
     this.form=this._formBuilder.group({
@@ -36,7 +39,7 @@ form:FormGroup
      this.hosts.push(currentHost);
      console.log("Array" ,this.hosts[0]);
     //  this.ID=this.hosts[0][1].hostID
-     
+     this.isLoaded=true
     });
    
   }
@@ -45,7 +48,7 @@ deleteHost(index:number){
   console.log(host)
   this._hostService.deleteHost(host.hostID).subscribe(res=>{
     console.log((res as ApiResponse))
-    this.hosts.splice(index,1);
+    this.hosts[0].splice(index,1);
     // this.hosts.filter(item=> item!==host)
     console.log(this.hosts)
   })

@@ -8,16 +8,33 @@
     -o-border-radius: 15px;
     border-color: #aaa;
     box-shadow: 5px 5px 5px 5px #aaa,-10px 10px 10px -10px #aaa;
+    overflow: hidden;
     /* background-color: snow; */
 }
-img{
-    border-radius: 15px;
-    -webkit-border-radius: 15px;
-    -moz-border-radius: 15px;
-    -ms-border-radius: 15px;
-    -o-border-radius: 15px;
+.paginate{
+    color: #444;
+    font-weight: bold;
+    font-size: large;
 }
-button.details{
+/* img{
+        display: inline-block;
+        max-width: 100%;
+        margin-top: -20px;
+    
+    }
+.img{
+        max-width: 500px;
+        height: 180px;
+        overflow: hidden;
+    } */
+.my-paragraph
+    {
+        white-space: nowrap;
+        width: 15em;
+        overflow: hidden;
+        text-overflow:ellipsis;
+}
+button.details,button.city{
     font-weight: bold;
     color: snow;
     background-color: #DE1E45;
@@ -28,7 +45,7 @@ button.details{
     -ms-transition: all ease 0.5s;
     -o-transition: all ease 0.5s;
 }
-button.details:hover{
+button.details:hover,button.city:hover{
     border-color: #DE1E45;
     color: #DE1E45;
     background-color: transparent;
@@ -37,4 +54,12 @@ h2{
     color: #444;
     font-weight: bold;
     font-size: 2.5rem;
+}
+.noListing{
+    margin-top: 2rem;
+}
+.noListing h3{
+    
+    color: #444;
+    font-weight: bold;
 }

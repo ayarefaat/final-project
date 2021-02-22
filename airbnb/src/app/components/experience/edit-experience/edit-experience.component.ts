@@ -14,8 +14,12 @@ export class EditExperienceComponent implements OnInit {
   form:FormGroup;
   experienceId:number;
   experience:Experience=new Experience();
-
-  constructor(private _experienceService:ExperienceService,private _router:Router,private _formBuilder:FormBuilder,private _activatedRoute:ActivatedRoute){ }
+  minDate: Date;
+  isLoaded:boolean=false
+  constructor(private _experienceService:ExperienceService,private _router:Router,private _formBuilder:FormBuilder,private _activatedRoute:ActivatedRoute){
+    this.minDate = new Date();
+    this.minDate.setDate(this.minDate.getDate());
+   }
 
   ngOnInit(): void {
     this._activatedRoute.paramMap.subscribe(params=>{
@@ -28,10 +32,20 @@ export class EditExperienceComponent implements OnInit {
           place:[this.experience.place,[Validators.required]],
           typeOfExperience:[this.experience.typeOfExperience,[Validators.required]],
           description:[this.experience.description,[Validators.required]],
+          // duration:[this.experience.duration,[Validators.required]],
+          startDate: [this.experience.startDate, [Validators.required]],
+         endDate: [this.experience.endDate, [Validators.required]],
+          totalPrice:[this.experience.totalPrice,[Validators.required]],
+          transportation:[this.experience.transportation,[Validators.required]],
+          pets:[this.experience.pets,[Validators.required]],
+          catering:[this.experience.catering,[Validators.required]],
+          language:[this.experience.language,[Validators.required]],
+          capacity:[this.experience.capacity,[Validators.required]],
          
         })
+        this.isLoaded=true
       })
-
+     
         
       })
   }
@@ -46,11 +60,17 @@ export class EditExperienceComponent implements OnInit {
         {
           this._router.navigateByUrl("/experience/myExperience");
         }
-
       }
     )
 
   }
-
+  startDate: Date;
+  onValueChange1(value: Date): void {
+    this.startDate = value;
+  }
+  endDate: Date;
+  onValueChange2(value: Date): void {
+    this.endDate = value;
+    }
  
 }

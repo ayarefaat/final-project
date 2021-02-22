@@ -23,32 +23,16 @@ export class SignupComponent implements OnInit {
       FirstName:['',[Validators.required]],
       LastName:['',[Validators.required]],
       Age:['',[Validators.required]],
-      Mobile:['',[Validators.required]],
+      Mobile:['',[Validators.required,Validators.minLength(11),Validators.maxLength(11)]],
       Email:['',[Validators.required,Validators.email]],
-      Password:['',[Validators.required]],
+      Password:['',[Validators.required,Validators.minLength(8)]],
       Gender:['',[Validators.required]],
       userImage:[null]
     })
   }
-
-// selectImage(ev){
-//   this.image=<File>ev.target.files[0]
-//   console.log(this.image)
-// }
-
-// uploadImage(){
-//   let formData = new FormData();
-//   console.log(formData)
-//   formData.append('userImage', this.image);
-//   // var options = { content: formData };
-//   console.log(this.image,formData)
-//   this._userService.uploadImage(formData).subscribe((res:ApiResponse)=>{
-//     console.log("error")
-//     console.log(res as ApiResponse)
-//   })
-//   // console.log(formData)
-// }
-
+ numberValidator(number){
+    return  /^01(0|1|2)\d{8}$/.test(number)
+}
 addUser(){
   let user:User=new User();
   user=this.form.value;
@@ -64,7 +48,7 @@ addUser(){
      this._router.navigateByUrl('/user/login')
      console.log(newUser)
    }else{
-     alert('error')
+     alert((res as ApiResponse).message)
    }
  })
  }

@@ -15,8 +15,9 @@ url:any;
 image:null;
 // userImage:null;
 ID:number
-isVisible:boolean
-form:FormGroup
+isVisible:boolean=false
+form:FormGroup;
+isLoaded:boolean=false
 change(){
   if(this.user[0].userImage){
     this.isVisible=false
@@ -37,7 +38,7 @@ change(){
       this.ID=this.user[0].userID;
       console.log(this.user[0].firstName, this.user[0].userImage);
       this.change();
-    
+      this.isLoaded=true
     })
   }
 
@@ -62,10 +63,12 @@ updateImage(){
   formData.append('userImage',this.image);
   console.log(formData,this.image)
   this._userService.uploadImage(this.ID,formData).subscribe(res=>{
-    console.log(res);
+  console.log(res);
+  this.user[0].userImage=((res as ApiResponse).data).userImage
+    this.changeImage();
   })
 }
 changeImage(){
-  this.isVisible=true
+  this.isVisible=!this.isVisible;
 }
 }

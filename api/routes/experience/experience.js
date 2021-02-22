@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const Exp=require('../../models/experience');
+const Exp=require('../../models/experience')
 const multer  = require('multer');
 const { json } = require('body-parser');
 const storage=multer.diskStorage({
@@ -17,7 +17,7 @@ const upload=multer({storage:storage});
 router.put('/photo/:id',upload.single('placeImage'),(req,res)=>{
     let id =req.params.id
     console.log(id)
-    let fileUrl = req.file.path.replace(/\\/g, "").substring(`uploads`.length).split('_')[1]
+    let fileUrl = req.file.path.replace(/\\/g, "").substring(`uploads`.length)
     console.log(fileUrl)
    Exp.findOneAndUpdate({experienceID:id},{placeImage:fileUrl},{new:true},(err,experience)=>{
         if(err){
@@ -41,11 +41,18 @@ router.put('/photo/:id',upload.single('placeImage'),(req,res)=>{
 
 //to make my experience
 router.post('/',(req,res)=>{
-    // console.log(req.user)
     Exp.create({
         place:req.body.place,
-       typeOfExperience:req.body.typeOfExperience,
+        typeOfExperience:req.body.typeOfExperience,
         description:req.body.description,
+        transportation:req.body.transportation,
+        startDate:req.body.startDate,
+        endDate:req.body.endDate,
+        totalPrice:req.body.totalPrice,
+        language:req.body.language,
+        pets:req.body.pets,
+        catering:req.body.catering,
+        capacity:req.body.capacity,
         createdBy:req.user.id,
         hostName:req.user.firstName,
         hostEmail:req.user.email,
@@ -72,15 +79,18 @@ router.post('/',(req,res)=>{
 // to get all user experience for specific user
 router.get("/userExp",(req,res)=>{
     Exp.find({createdBy:req.user.id},(err,exp)=>{
-        if(err){
+        if(err)
+        {
             res.json({
                 data:null,
                 authorized:false,
                 message:"Can't get experience",
                 success:false
+
             })
-        }else 
-        {  
+        }
+        else 
+        {
             res.json({
                 data:exp,
                 authorized:true,
@@ -88,8 +98,31 @@ router.get("/userExp",(req,res)=>{
                 success:true
             })        
         }
+    
+    })
+
+})
+
+router.get('/allExperiences',(req,res)=>{
+    Exp.find({},(err,experience)=>{
+        if(err){
+            res.json({
+                data:null,
+                authorized:false,
+                message:'can not get data',
+                success:false
+            })
+        }else{
+            res.json({
+                data:experience,
+                authorized:true,
+                message:"Successfully get data",
+                success:true
+            })
+        }
     })
 });
+
 
 router.put("/:id",(req,res)=>{
     let id=req.params.id;
@@ -115,27 +148,7 @@ router.put("/:id",(req,res)=>{
 
 
         })
-});
-//to get all experiences
-router.get('/allExperiences',(req,res)=>{
-    Exp.find({},(err,experience)=>{
-        if(err){
-            res.json({
-                data:null,
-                authorized:false,
-                message:"can't get experiences",
-                success:false
-            })
-        }else{
-            res.json({
-                data:experience,
-                authorized:true,
-                message:"Successfully get experiences",
-                success:true
-            })
-        }
-    })
-});
+})
 
 router.get("/:id",(req,res)=>{
     let id=req.params.id;
@@ -163,22 +176,23 @@ router.get("/:id",(req,res)=>{
 router.delete("/:id",(req,res)=>{
     let id=req.params.id;
     Exp.findOneAndDelete({experienceID:id},(err,exp)=>{
-        if(err){
+        if(err)
+            {
                 res.json({
                     data:null,
                     authorized:false,
                     message:"can't delete  your data",
                     success:false
                 })
-            }else
+            }
+            else
             {
             res.json({
                 data:exp,
                 authorized:true,
                 message:"we deleted your data :P",
                 success:true
-            })
-         }
+            })}
     })
 
 

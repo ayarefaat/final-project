@@ -1,9 +1,4 @@
-<section>
-    <div class="container-fluid">
-        <a routerLink="/"> <img src="/assets/images/logo.png" alt="" width="120"></a>
-        <hr>
-    </div>
-</section>
+
 <section>
     <div class="container-fluid">
         <div class="row justify-content-around">
@@ -41,15 +36,16 @@
                             <input formControlName="Password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
                             <div *ngIf="form.controls['Password'].invalid && (form.controls['Password'].touched || form.controls['Password'].dirty)">
                               <small class="form-text text-danger" *ngIf="form.controls['Password'].hasError('required')">required password</small>
+                              <small class="form-text text-danger" *ngIf="form.controls['Password'].hasError('minlength')">min length must be 8</small>
                           </div>
                           </div>
                           <div class="form-group">
                             <label for="exampleInputEmail1"><h4>Mobile Number:</h4></label>
-                            <input formControlName="Mobile"  type="number" class="form-control"   placeholder="Enter Mobile number">
+                            <input formControlName="Mobile"  type="text" class="form-control"   placeholder="Enter Mobile number">
                             <div *ngIf="form.controls['Mobile'].invalid && (form.controls['Mobile'].touched || form.controls['Mobile'].dirty)">
                               <small  class="form-text text-danger" *ngIf="form.controls['Mobile'].hasError('required')" >Required field</small>
-                              <small  class="form-text text-danger" *ngIf="form.controls['Mobile'].hasError('minlength')" >min length is 6</small>
-                              <small  class="form-text text-danger" *ngIf="form.controls['Mobile'].hasError('maxlength')" >max length is 13</small>
+                              <small  class="form-text text-danger" *ngIf="form.controls['Mobile'].hasError('minlength')" >Invalid Mobile number</small>
+                              <small  class="form-text text-danger" *ngIf="form.controls['Mobile'].hasError('maxlength')" >Invalid Mobile number</small>
                             </div>
                           </div>
                         <div class="form-group">

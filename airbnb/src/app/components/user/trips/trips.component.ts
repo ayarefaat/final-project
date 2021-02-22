@@ -9,7 +9,10 @@ import { PlaceService } from './../../../services/place.service';
   styleUrls: ['./trips.component.css']
 })
 export class TripsComponent implements OnInit {
-trips:Place[]=[]
+trips=[];
+pageNumber:number=3;
+currentPg:number=1;
+isLoaded:boolean=false
   constructor(private _placeService:PlaceService) { }
 
   ngOnInit(): void {
@@ -17,12 +20,15 @@ trips:Place[]=[]
       console.log(((res as ApiResponse).data));
       let foundTrips=(res as ApiResponse).data;
       this.trips.push(foundTrips);
-      console.log(this.trips[0])
+      console.log(this.trips[0]);
+      this.isLoaded=true
     })
   }
-  deleteTrip(id:number){
-    this._placeService.deleteTrip(id).subscribe(res=>{
+  deleteTrip(index:number){
+    let trip=this.trips[0][index]
+    this._placeService.deleteTrip(trip.placeID).subscribe(res=>{
       console.log((res as ApiResponse).message)
+      this.trips[0].splice(index,1)
     })
   }  
 

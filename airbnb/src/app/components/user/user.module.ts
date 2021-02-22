@@ -10,6 +10,7 @@ import { SharedModule } from '../../shared/shared.module';
 import { LogoutComponent } from './logout/logout.component';
 import { EditComponent } from './edit/edit.component';
 import { TripsComponent } from './trips/trips.component';
+import {NgxPaginationModule} from 'ngx-pagination'
 
 
 const routes:Routes=[
@@ -18,13 +19,13 @@ const routes:Routes=[
   {path:'logout',component:LogoutComponent},
   {path:'profile',component:ProfileComponent},
   {path:'edit/:id',component:EditComponent},
-  {path:'trips',component:TripsComponent}
+  {path:'trips',component:TripsComponent},
 ]
 
 @NgModule({
   declarations: [LoginComponent, ProfileComponent,SignupComponent, LogoutComponent, EditComponent, TripsComponent],
   imports: [
-RouterModule.forChild(routes),SharedModule,CommonModule
+RouterModule.forChild(routes),SharedModule,CommonModule,NgxPaginationModule
   ]
 })
 export class UserModule { }

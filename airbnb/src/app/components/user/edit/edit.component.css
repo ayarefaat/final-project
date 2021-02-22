@@ -38,4 +38,7 @@ button:hover{
     border-color:#DE1E45 ;
     color:#DE1E45 ;
 }
-
+h2{
+    color: #444;
+    font-weight: bold;
+}

@@ -7,3 +7,11 @@
     font-weight: bold;
     
 }
+.my-paragraph
+{
+    white-space: nowrap;
+    width: 15em;
+    overflow: hidden;
+    text-overflow:ellipsis;
+}
+

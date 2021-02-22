@@ -15,7 +15,7 @@ const upload=multer({storage:storage});
 router.put('/photo/:id',upload.single('hostImage'),(req,res)=>{
     let id =req.params.id
     console.log(id)
-    let fileUrl = req.file.path.replace(/\\/g, "").substring(`uploads`.length).split('_')[1]
+    let fileUrl = req.file.path.replace(/\\/g, "").substring(`uploads`.length)
     console.log(fileUrl)
    Host.findOneAndUpdate({hostID:id},{hostImage:fileUrl},{new:true},(err,host)=>{
         if(err){
@@ -45,7 +45,6 @@ router.post('/',(req,res)=>{
         numberOfBedrooms:req.body.numberOfBedrooms,
         numberOfBathrooms:req.body.numberOfBathrooms,
         totalPrice:req.body.totalPrice,
-        numberOfNights:req.body.numberOfNights,
         activities:req.body.activities,
         description:req.body.description,
         createdBy:req.user.id,

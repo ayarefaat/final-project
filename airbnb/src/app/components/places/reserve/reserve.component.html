@@ -1,9 +1,4 @@
 <section id="reserve">
-  <div class="container-fluid">
-    <div class="icon">
-      <a routerLink="/"><i class="fab fa-airbnb"></i></a>
-  </div>
-  </div>
     <div class="container  my-5">
         <div id="form" class="col-md-8 m-auto">
             <h2>Billing address</h2>
@@ -36,8 +31,54 @@
                       <small class="form-text text-danger" *ngIf="form.controls['apartmentNumber'].hasError('required')">required apartmentNumber</small>
                     </div>
                   </div>
+
+                  <!-- <mat-form-field>
+                    <mat-date-range-input [rangePicker]="picker" [dateFilter]="unavailableDays">
+                  <input matStartDate  placeholder="Start date"  formControlName="startDate">
+                  <input matEndDate   placeholder="End date" formControlName="endDate">
+                    </mat-date-range-input>
+                  </mat-form-field>
+                  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+
+                  <mat-date-range-picker #picker></mat-date-range-picker> -->
+
+                  <div class="row">
+                    <div class="col-xs-12 col-12 col-sm-6 col-md-6 form-group ">
+                      <label for="date"><h5>From :</h5></label>
+                      <input 
+                      class="form-control"
+                      type="text" 
+                      placeholder="Enter Start Date" 
+                      bsDatepicker 
+                      placement="bottom" 
+                      [bsConfig]="{isAnimated: true, adaptivePosition: true,dateInputFormat: 'DD-MM-YYYY', containerClass: 'theme-default'}"
+                      (bsValueChange)="onValueChange1($event)"
+                      formControlName="startDate"
+                      [minDate]="minDate"
+                      [datesDisabled]="disabledDates"
+                      >
+                    </div>
+                    <div class="col-xs-12 col-12 col-sm-6 col-md-6 form-group ">
+                        <label for="date"><h5>To :</h5></label>
+                        <input 
+                        class="form-control"
+                        type="text" 
+                        placeholder="Enter End Date" 
+                        bsDatepicker 
+                        placement="bottom" 
+                        [bsConfig]="{isAnimated: true, adaptivePosition: true,dateInputFormat: 'DD-MM-YYYY', containerClass: 'theme-default'}"
+                        (bsValueChange)="onValueChange2($event)"
+                        formControlName="endDate"
+                        [minDate]="minDate"
+                        [datesDisabled]="disabledDates"
+                        >
+                      </div>
+                  </div>
+
+                <button (click)="calculate()" type="button" class="btn ml-5 btncalc">Calculate Total Price</button>
+                <span *ngIf="isVisible && isCalculated" class="ml-3">${{tripCost}}</span>
                 
-                <button [disabled]="form.invalid" type="submit" class="btn " (click)="confirm()" routerLink="/places/confirm">Confirm</button>
+                <button [disabled]="form.invalid" type="submit" class="btn mt-3" (click)="confirm()" >Confirm</button>
                 </form>
         </div>
     </div>

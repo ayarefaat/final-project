@@ -46,8 +46,8 @@ safety=[
       numberOfBedrooms:['',[Validators.required]],
       numberOfBathrooms:['',[Validators.required]],
       totalPrice:['',[Validators.required]],
-      numberOfNights:['',[Validators.required]],
-      description:['',[Validators.required]],
+     
+      description:['',[Validators.required,Validators.minLength(30)]],
       // startDate:['',[Validators.required]],
       // endDate:['',[Validators.required]],
       activities:[''],
@@ -98,7 +98,9 @@ start(){
   formData.append('hostImage',this.image);
   this._hostService.uploadImage(this.ID,formData).subscribe(res=>{
     console.log(res);
-    this._router.navigateByUrl('hosting/confirm')
+    if((res as ApiResponse).success==true){
+      this._router.navigateByUrl('hosting/confirm')
+    }
   })
   
 }

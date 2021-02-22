@@ -14,7 +14,10 @@ export class CityComponent implements OnInit {
   constructor(private _activatedRoute:ActivatedRoute,private _hostService:HostService) { }
 countryName:string;
 places:Host[]=[];
-cities=[]
+cities=[];
+isLoaded:boolean=false
+pageNumber:number=4;
+currentPg:number=1;
   ngOnInit(): void {
     this._activatedRoute.paramMap.subscribe(params=>{
       this.countryName=params.get('location')
@@ -34,7 +37,8 @@ cities=[]
             this.cities.push(this.places[i])
           }
         };
-        console.log(this.cities)
+        console.log(this.cities);
+        this.isLoaded=true
       })
       
     });

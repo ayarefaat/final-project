@@ -3,6 +3,8 @@ section#about{
     height: 100vh;
     background-size: cover;
     background-position: center;
+    margin-top: -1rem;
+    padding-top: 20px;
 }
 section#about .icon a{
     color: #DE1E45;
